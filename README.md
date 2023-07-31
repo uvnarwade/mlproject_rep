@@ -61,3 +61,16 @@ new changes is done
 local host= http://127.0.0.1:5000/
 
 deployment on elastic binstock-https://www.youtube.com/watch?v=gbJn2Ls2QsI
+
+Step by step intution 
+
+9 files changed, 41 insertions(+)
+ create mode 100644 src/components/__init__.py
+ create mode 100644 src/components/data_ingestion.py
+ create mode 100644 src/components/data_transformation.py
+ create mode 100644 src/components/model_trainer.py
+ create mode 100644 src/pipeline/__init__.py
+ create mode 100644 src/pipeline/exception.py
+ create mode 100644 src/pipeline/logger.py
+ create mode 100644 src/pipeline/predict_pipeline.py
+ create mode 100644 src/pipeline/train_pipeline.py
