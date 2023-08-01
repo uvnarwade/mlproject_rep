@@ -1,0 +1,8 @@
+1.Create notebook folder D:\Basic_ML_Project\mlproject_rep\notebook\data
+2.create data folder in notebook 
+3.In data folder we can perform eda part with jupyter notebook file 
+notebook\1. EDA STUDENT PERFORMANCE .ipynb
+notebook\2. MODEL TRAINING.ipynb
+
+4.import project csv file into data folder 
+5.

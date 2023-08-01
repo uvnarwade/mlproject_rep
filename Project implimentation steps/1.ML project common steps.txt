@@ -1,0 +1,145 @@
+Step by Step Project Lineup
+1.Create Repository
+2.create folder in any drive
+3.with right click go to git bash here
+4.type git clone (repo link)
+5.github repository is created
+6.type code . (for vs code openning)
+7.VS code is open 
+
+8.create requirements.txt file 
+9.create setup.py file 
+
+from setuptools import find_packages,setup
+from typing import List
+
+HYPEN_E_DOT='-e .'
+def get_requirements(file_path:str)->List[str]:
+    '''
+    this function will return the list of requirements
+    '''
+    requirements=[]
+    with open(file_path) as file_obj:
+        requirements=file_obj.readlines()
+        requirements=[req.replace("\n","") for req in requirements]
+
+        if HYPEN_E_DOT in requirements:
+            requirements.remove(HYPEN_E_DOT)
+    
+    return requirements
+
+setup(
+name='mlproject',
+version='0.0.1',
+author='yuvi',
+author_email='yuvinarwade@gmail.com',
+packages=find_packages(),
+install_requires=get_requirements('requirements.txt')
+
+)
+
+
+10.create virtual invironment
+
+Creating conda environment
+
+conda create -p venv python==3.8 -y
+conda activate venv/
+OR
+
+conda activate venv
+
+11. Add files to git
+
+git add .
+OR
+git add <file_name>
+
+Note: To ignore file or folder from git we can write name of file/folder in .gitignore file
+
+To check the git status
+
+git status
+To check all version maintained by git
+
+git log
+To create version/commit all changes by git
+
+git commit -m "message"
+To send version/changes to github
+
+git push origin main
+To check remote url
+
+12.create src folder 
+ create file src/exception.py
+ create file src/logger.py
+create file src/__init__.py
+create file src/utils.py
+
+create file src/components/__init__.py
+ create file src/components/data_ingestion.py
+ create file src/components/data_transformation.py
+ create file src/components/model_trainer.py
+ create file src/pipeline/__init__.py
+ create file src/pipeline/predict_pipeline.py
+ create file src/pipeline/train_pipeline.py
+
+13.type exception code in src/exception.py
+
+import sys
+from src.logger import logging
+
+def error_message_detail(error,error_detail:sys):
+    _,_,exc_tb=error_detail.exc_info()
+    file_name=exc_tb.tb_frame.f_code.co_filename
+    error_message="Error occured in python script name [{0}] line number [{1}] error message[{2}]".format(
+     file_name,exc_tb.tb_lineno,str(error))
+
+    return error_message
+
+    
+
+class CustomException(Exception):
+    def __init__(self,error_message,error_detail:sys):
+        super().__init__(error_message)
+        self.error_message=error_message_detail(error_message,error_detail=error_detail)
+    
+    def __str__(self):
+        return self.error_message
+
+14.type code in to src/logger.py
+
+import logging
+import os
+from datetime import datetime
+
+LOG_FILE=f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
+logs_path=os.path.join(os.getcwd(),"logs",LOG_FILE)
+os.makedirs(logs_path,exist_ok=True)
+
+LOG_FILE_PATH=os.path.join(logs_path,LOG_FILE)
+
+logging.basicConfig(
+    filename=LOG_FILE_PATH,
+    format="[ %(asctime)s ] %(lineno)d %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO,
+
+
+)
+
+15.We can check the logger is stared or not by typing the code in src/logger.py 
+if __name__=="__main__":
+    logging.info("logging has started ")
+
+logs folder is created 
+we can check the log in it ex-08_01_2023_16_12_43.log
+[ 2023-08-01 16:12:43,280 ] 21 root - INFO - logging has started 
+
+
+
+
+up to this all steps common for all the project 
+
+
+
